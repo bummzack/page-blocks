@@ -21,5 +21,6 @@
 		"unclecheese/betterbuttons": "dev-master",
 		"ajshort/silverstripe-gridfieldextensions": "dev-master",
 		"bummzack/sortablefile": "dev-master"
-	}
+	},
+	"minimum-stability": "dev"
 }
