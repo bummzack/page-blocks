@@ -14,18 +14,18 @@
 	"support": {
 		"issues": "http://github.com/bummzack/page-blocks/issues"
 	},
+	"minimum-stability": "dev",
 	"require": {
 		"silverstripe/framework": "~3.1",
-		"colymba/gridfield-bulk-editing-tools": "dev-master",
+		"colymba/gridfield-bulk-editing-tools": "~2.1.1",
 		"undefinedoffset/sortablegridfield": "dev-master",
-		"unclecheese/betterbuttons": "dev-master",
+		"unclecheese/betterbuttons": "3.0.*@dev",
 		"ajshort/silverstripe-gridfieldextensions": "dev-master",
-		"bummzack/sortablefile": "dev-master"
+		"bummzack/sortablefile": "1.0.*@dev"
 	},
 	"extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         }
-    },
-	"minimum-stability": "dev"
+    }
 }
