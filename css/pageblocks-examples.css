@@ -1,0 +1,19 @@
+
+section.block {
+	margin-bottom: 2em;
+}
+
+/* Flexible video-box */
+.video-box {
+	position: relative;
+	height: 0px;
+	width: 100%;
+}
+
+	.video-box iframe {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+	}

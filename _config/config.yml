@@ -1,0 +1,24 @@
+---
+Name: page-blocks
+---
+# Better Buttons config. 
+# This is a cheap way to disable the "new" button when editing blocks (since they are versioned).
+# The "new" button has to be removed, because it doesn't allow selecting the class to create
+BetterButtonsUtils:
+  versioned_edit:
+    BetterButton_New: false
+# Add the publish all extension to LeftAndMain
+LeftAndMain:
+  extensions:
+    - PublishAllExtension
+# PageBlocks defaults
+PageBlocks:
+  allow_publish_all: true
+# VideoBlock config defaults
+VideoBlock:
+  player_color: '44BBFF' # color of the player controls (vimeo only)
+  aspect_ratios:
+    - '0' # Automatic
+    - '16/9'
+    - '8/5'
+    - '4/3'

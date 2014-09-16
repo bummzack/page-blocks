@@ -9,7 +9,8 @@ class TextBlock extends Block
 		'Content' => 'HTMLText'
 	);
 	
-	public function getCMSFields(){
+	public function getCMSFields()
+	{
 		$fields = parent::getCMSFields();
 		
 		$tinyMce = new HtmlEditorField('Content', 'Text');

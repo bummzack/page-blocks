@@ -39,7 +39,8 @@ class Block extends DataObject
 	 * Get the current published status.
 	 * @return string
 	 */
-	public function PublishedStatus(){
+	public function PublishedStatus()
+	{
 		if(!$this->IsPublished()){
 			return 'Unpublished';
 		}
@@ -53,7 +54,8 @@ class Block extends DataObject
 	 * Whether or not this block has been published
 	 * @return boolean
 	 */
-	public function IsPublished(){
+	public function IsPublished()
+	{
 		if(!$this->ID)
 			return false;
 		
@@ -66,7 +68,8 @@ class Block extends DataObject
 	 * Prevent creation of non-specific Blocks 
 	 * @see DataObject::canCreate()
 	 */
-	public function canCreate($member = null){
+	public function canCreate($member = null)
+	{
 		if($this->ClassName == 'Block'){
 			return false;
 		}
@@ -78,7 +81,8 @@ class Block extends DataObject
 	 * Render this block to HTML
 	 * @return HTMLText
 	 */
-	public function HTML(){
+	public function HTML()
+	{
 		// render with a template that has the same classname or fall back to "Block"
 		return $this->renderWith(array($this->ClassName, 'Block'));
 	}

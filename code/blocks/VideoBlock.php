@@ -17,7 +17,7 @@ class VideoBlock extends Block
 	
 	/**
 	 * Aspect ratios to use for manual ratio dropdown.
-	 * Can be customized via _config.yml
+	 * Can be customized via config.yml
 	 * @var array
 	 */
 	private static $aspect_ratios = array(
@@ -26,7 +26,7 @@ class VideoBlock extends Block
 	
 	/**
 	 * Color to customize the vimeo player. 
-	 * Can be set via _config.yml
+	 * Can be set via config.yml
 	 * @var string
 	 */ 
 	private static $player_color = '44BBFF';
@@ -45,7 +45,7 @@ class VideoBlock extends Block
 			$values = array();
 			foreach ($ratios as $ratio){
 				if(preg_match('{(\d+)/(\d+)}', $ratio, $matches)){
-					$float = (string)(intval($matches[1]) / intval($matches[2]));
+					$float = number_format(intval($matches[2]) / intval($matches[1]), 6);
 					$values[$float] = $matches[0];
 				} else if($ratio == '0'){
 					$values['0'] = 'Automatic';
@@ -78,7 +78,8 @@ class VideoBlock extends Block
 	/**
 	 * Fetch and update the media thumbnail
 	 */
-	public function updateOEmbedThumbnail(){
+	public function updateOEmbedThumbnail()
+	{
 		$oembed = $this->Media();
 		if($oembed && $oembed->thumbnail_url){
 			$fileName = preg_replace('/[^A-z0-9\._-]/', '', $oembed->thumbnail_url);
@@ -104,7 +105,8 @@ class VideoBlock extends Block
 	 * Get the embedded media
 	 * @return false|Oembed_Result
 	 */
-	public function Media(){
+	public function Media()
+	{
 		if($this->ExternalMedia){
 			return Oembed::get_oembed_from_url($this->ExternalMedia, false, array(
 				'color' 	=> Config::inst()->get('VideoBlock', 'player_color'),
@@ -122,7 +124,8 @@ class VideoBlock extends Block
 	 * @param number $mult a multiplier for the ratio. Defaults to 100, so that the output is in percent
 	 * @return number
 	 */
-	public function MediaHeightRatio($mult = 100){
+	public function MediaHeightRatio($mult = 100)
+	{
 		if($this->ManualRatio){
 			return round($mult * $this->ManualRatio, 2);
 		}
@@ -133,7 +136,8 @@ class VideoBlock extends Block
 		return round($mult * $ratio);
 	}
 
-	protected function onBeforeWrite(){
+	protected function onBeforeWrite()
+	{
 		parent::onBeforeWrite();
 		if($this->isChanged('ExternalMedia', 2) || ($this->ExternalMedia && !$this->MediaThumbID)){
 			$this->updateOEmbedThumbnail();

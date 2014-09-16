@@ -11,6 +11,9 @@ class PublishAllExtension extends LeftAndMainExtension
 		'publishblocks'	
 	);
 	
+	/**
+	 * Publish all blocks and the page itself
+	 */
 	public function publishblocks($data, $form){
 		$className = $this->owner->stat('tree_class');
 		$SQL_id = Convert::raw2sql($data['ID']);
@@ -21,6 +24,7 @@ class PublishAllExtension extends LeftAndMainExtension
 		if(!$record || !$record->ID) throw new SS_HTTPResponse_Exception("Bad record ID #" . (int)$data['ID'], 404);
 		
 		$record->doPublish();
+		
 		$blocks = $record->Blocks();
 		if($blocks){
 			foreach($blocks as $block){
