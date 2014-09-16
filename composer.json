@@ -18,9 +18,9 @@
 		"silverstripe/framework": "~3.1",
 		"colymba/gridfield-bulk-editing-tools": "dev-master",
 		"undefinedoffset/sortablegridfield": "dev-master",
-		"unclecheese/betterbuttons": "3.0.x-dev",
+		"unclecheese/betterbuttons": "dev-master",
 		"ajshort/silverstripe-gridfieldextensions": "dev-master",
-		"bummzack/sortablefile": "1.0.x-dev"
+		"bummzack/sortablefile": "dev-master"
 	},
 	"extra": {
         "branch-alias": {
