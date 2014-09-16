@@ -21,10 +21,11 @@ This module should be light-weight and extensible. We provide the backend integr
  - [GridField Extensions](https://github.com/ajshort/silverstripe-gridfieldextensions)
 
 #### Optional (for a better experience)
+These will be installed when installing the module via composer.
 
  - [SortableGridField](https://github.com/UndefinedOffset/SortableGridField) (allow content-block sorting)
  - [sortablefile](https://github.com/bummzack/sortablefile) (attach many images and sort them with drag'n'drop)
- - [Better Buttons for GridField](https://github.com/unclecheese/silverstripe-gridfield-betterbuttons) (better buttons in your gridfield records)
+ - [Better Buttons for GridField](https://github.com/unclecheese/silverstripe-gridfield-betterbuttons) (better buttons in your gridfield records. Allows you to save/publish directly within the blocks instead of using the bulk-manager actions).
 
 ## Installation
 
@@ -67,6 +68,23 @@ Page:
   extensions:
     - PageBlocks
 ```
+
+#### Making the blocks sortable
+
+The easiest way to make blocks sortable is to install the following (soft) dependencies:
+
+ - [SortableGridField](https://github.com/UndefinedOffset/SortableGridField) (allow content-block sorting)
+ - [sortablefile](https://github.com/bummzack/sortablefile) (attach many images and sort them with drag'n'drop)
+
+After doing so, you need to make the blocks sortable by adding the `Sortable` extension to them. Put the following into your `config.yml`
+
+```yml
+# put this in your mysite/_config/config.yml
+Block:
+  extensions:
+    - Sortable
+```
+Run `dev/build?flush=1` afterwards and you're set.
 
 #### Overriding some of the defaults
 
@@ -133,4 +151,4 @@ Then also create a matching template (named `EmbedBlock.ss`) in your template fo
 $EmbedCode.RAW
 ```
 
-Then just run `dev/build?flush=1` and you're set. The EmbedBlock should be available in the cms via dropdown.
+Then just run `dev/build?flush=1` and you're set. The EmbedBlock should be available in the CMS via dropdown.
