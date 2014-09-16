@@ -1,0 +1,24 @@
+{
+	"name": "bummzack/page-blocks",
+	"description": "Modular content-blocks for SilverStripe pages",
+	"type": "silverstripe-module",
+	"homepage": "http://github.com/bummzack/page-blocks",
+	"keywords": ["silverstripe", "blocks", "content", "modular"],
+	"license": "BSD Simplified",
+	"authors": [
+		{
+			"name": "Roman Schmid",
+			"email": "bummzack@gmail.com"
+		}
+	],
+	"support": {
+		"issues": "http://github.com/bummzack/page-blocks/issues"
+	},
+	"require": {
+		"silverstripe/framework": "~3.1",
+		"colymba/gridfield-bulk-editing-tools": "dev-master",
+		"unclecheese/betterbuttons": "dev-master",
+		"ajshort/silverstripe-gridfieldextensions": "dev-master",
+		"bummzack/sortablefile": "dev-master"
+	}
+}
