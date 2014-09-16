@@ -31,7 +31,7 @@ These will be installed when installing the module via composer.
 
 Use composer to install the module and all its dependencies.
 
-    composer require "bummzack/page-blocks" "dev-master"
+    composer require bummzack/page-blocks 1.0.*@dev
     
 If you don't use composer, make sure you install at least the modules that are listed as "mandatory" under **Requirements**
 

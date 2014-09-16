@@ -13,6 +13,7 @@
  - Add icons to bulk manager actions.
  - Add custom icon(s) to "Publish Page & Blocks" Button
  - Write a manual for content-editors?
+ - Get composer to do what it should...
 
  
 1) If more blocks are being added, it might be necessary to allow toggling them on/off via `_config.yml`. A simple solution to that would be to "abuse" `canCreate`. 
