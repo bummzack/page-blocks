@@ -4,7 +4,7 @@
 	"type": "silverstripe-module",
 	"homepage": "http://github.com/bummzack/page-blocks",
 	"keywords": ["silverstripe", "blocks", "content", "modular"],
-	"license": "BSD Simplified",
+	"license": "BSD-3-Clause",
 	"authors": [
 		{
 			"name": "Roman Schmid",
@@ -16,11 +16,16 @@
 	},
 	"require": {
 		"silverstripe/framework": "~3.1",
-		"colymba/gridfield-bulk-editing-tools": "dev-master",
-		"undefinedoffset/sortablegridfield": "dev-master",
-		"unclecheese/betterbuttons": "dev-master",
-		"ajshort/silverstripe-gridfieldextensions": "dev-master",
-		"bummzack/sortablefile": "dev-master"
+		"colymba/gridfield-bulk-editing-tools": "~2.1.1",
+		"undefinedoffset/sortablegridfield": "~0.3.2",
+		"unclecheese/betterbuttons": "3.0.x-dev",
+		"ajshort/silverstripe-gridfieldextensions": "~1.0.1",
+		"bummzack/sortablefile": "~1.0.0"
 	},
+	"extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
 	"minimum-stability": "dev"
 }
