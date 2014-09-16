@@ -18,9 +18,9 @@
 	"require": {
 		"silverstripe/framework": "~3.1",
 		"colymba/gridfield-bulk-editing-tools": "~2.1.1",
-		"undefinedoffset/sortablegridfield": "dev-master",
+		"undefinedoffset/sortablegridfield": "@dev",
 		"unclecheese/betterbuttons": "3.0.*@dev",
-		"ajshort/silverstripe-gridfieldextensions": "dev-master",
+		"ajshort/silverstripe-gridfieldextensions": "@dev",
 		"bummzack/sortablefile": "1.0.*@dev"
 	},
 	"extra": {
