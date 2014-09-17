@@ -33,6 +33,15 @@ Use composer to install the module and all its dependencies.
 
     composer require bummzack/page-blocks 1.0.*@dev
     
+If the above fails (composer complains about no matching packages when resolving requirements), then open up your `composer.json` file and add `"minimum-stability": "dev"` in the "root" of the JSON structure: 
+
+    {
+        "minimum-stability": "dev",
+        ... 
+    }
+    
+After doing so, run the composer require command again and it should successfully install the module and all requirements.
+    
 If you don't use composer, make sure you install at least the modules that are listed as "mandatory" under **Requirements**
 
 After installing, make sure you rebuild the database and flush the cache (`dev/build?flush=1`).
