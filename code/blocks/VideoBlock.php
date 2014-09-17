@@ -36,7 +36,7 @@ class VideoBlock extends Block
 		$fields = parent::getCMSFields();
 		
 		// field to enter the video URL
-		$externalField = new TextField('ExternalMedia', 'External media (url)');
+		$externalField = new TextField('ExternalMedia', _t('VideoBlock.VIDEO_URL', 'Video URL'));
 		
 		// field for video aspect-ratio
 		$ratios = Config::inst()->get('VideoBlock', 'aspect_ratios');
@@ -53,7 +53,7 @@ class VideoBlock extends Block
 			}
 			
 			if(count($values) > 0){
-				$ratioField = new DropdownField('ManualRatio', 'Manual ratio', $values);
+				$ratioField = new DropdownField('ManualRatio', _t('VideoBlock.ASPECT_RATIO', 'Aspect ratio'), $values);
 			}
 		}
 		

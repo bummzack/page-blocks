@@ -13,11 +13,8 @@ class TextBlock extends Block
 	{
 		$fields = parent::getCMSFields();
 		
-		$tinyMce = new HtmlEditorField('Content', 'Text');
-		
-		$fields->addFieldsToTab('Root.Main', array(
-			$tinyMce
-		));
+		$tinyMce = new HtmlEditorField('Content', _t('TextBlock.CONTENT', 'Content'));
+		$fields->addFieldToTab('Root.Main', $tinyMce);
 		
 		$this->extend('updateCMSFields', $fields);
 		return $fields;

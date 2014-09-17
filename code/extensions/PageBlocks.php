@@ -22,7 +22,9 @@ class PageBlocks extends DataExtension
 			? GridFieldConfig_BlockEditor::create('SortOrder')
 			: GridFieldConfig_BlockEditor::create();
 		
-		$gridField = new GridField('Blocks', 'Block', $this->owner->Blocks(), $gridConfig);
+		
+		$gridField = new GridField('Blocks', _t('PageBlocks.BLOCK', 'Block', 'GridField Title'), 
+			$this->owner->Blocks(), $gridConfig);
 		$gridField->setModelClass('Block');
 		
 		$fields->addFieldsToTab('Root.Main', array(
@@ -37,7 +39,10 @@ class PageBlocks extends DataExtension
 		if(Config::inst()->get('PageBlocks', 'allow_publish_all') == false){
 			return;
 		}
-		$button = FormAction::create('publishblocks', 'Publish Page & Blocks')->setAttribute('data-icon', 'accept');
+		$button = FormAction::create('publishblocks', 
+			_t('PageBlocks.PUBLISH_ALL', 'Publish Page & Blocks', 'Button label to publish page and all blocks'))
+			->setAttribute('data-icon', 'accept');
+		
 		if($majorActions = $actions->fieldByName('MajorActions')){
 			$majorActions->push($button);
 		} else {
@@ -66,10 +71,10 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor {
 		$bulkManager->removeBulkAction('bulkedit')->removeBulkAction('delete')->removeBulkAction('unlink');
 		// add the actions in desired order
 		$bulkManager
-			->addBulkAction('publish')
-			->addBulkAction('unpublish')
-			->addBulkAction('bulkedit', 'Edit', 'GridFieldBulkActionEditHandler')
-			->addBulkAction('versioneddelete', 'Delete', 'GridFieldBulkActionVersionedDeleteHandler');
+			->addBulkAction('publish', _t('PageBlock.PUBLISH', 'Publish'))
+			->addBulkAction('unpublish', _t('PageBlock.UNPUBLISH', 'Unpublish'))
+			->addBulkAction('bulkedit', _t('PageBlock.EDIT', 'Edit'), 'GridFieldBulkActionEditHandler')
+			->addBulkAction('versioneddelete', _t('PageBlock.DELETE', 'Delete'),'GridFieldBulkActionVersionedDeleteHandler');
 		
 		if($sortField && class_exists('GridFieldSortableRows')){
 			$this->addComponent(new GridFieldSortableRows('SortOrder'));
@@ -81,9 +86,9 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor {
 		$this->addComponent(new GridFieldAddNewMultiClass(), 'GridFieldToolbarHeader');
 		$this->addComponent($bulkManager);
 		$this->getComponentByType('GridFieldDataColumns')->setDisplayFields(array(
-			'Title' => 'Title',
-			'ClassName' => 'Type',
-			'PublishedStatus' => 'Status'
+			'Title' => _t('Block.TITLE', 'Title'),
+			'i18n_singular_name' => _t('Block.TYPE', 'Type'),
+			'PublishedStatus' => _t('Block.STATUS', 'Status')
 		));
 	}
 }

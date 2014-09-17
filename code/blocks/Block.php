@@ -28,9 +28,8 @@ class Block extends DataObject
 		$mainTab->setTitle(_t('SiteTree.TABMAIN', "Main"));
 		
 		$fields->addFieldsToTab('Root.Main', array(
-			new TextField('Title')
+			new TextField('Title', _t('Block.TITLE', 'Title'))
 		));
-		
 		$this->extend('updateCMSFields', $fields);
 		return $fields;
 	}
@@ -42,12 +41,12 @@ class Block extends DataObject
 	public function PublishedStatus()
 	{
 		if(!$this->IsPublished()){
-			return 'Unpublished';
+			return _t('Block.UNPUBLISHED', 'Unpublished');
 		}
 		if($this->stagesDiffer('Stage', 'Live')){
-			return 'Modified';
+			return _t('Block.MODIFIED', 'Modified');
 		}
-		return 'Published';
+		return _t('Block.PUBLISHED', 'Published');
 	}
 	
 	/**

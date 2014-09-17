@@ -34,7 +34,7 @@ class PublishAllExtension extends LeftAndMainExtension
 		
 		$this->owner->response->addHeader(
 			'X-Status',
-			rawurlencode('Successfully published page and all blocks')
+			rawurlencode(_t('PageBlocks.PUBLISH_ALL_SUCCESS', 'Successfully published page and all blocks'))
 		);
 		
 		return $this->owner->getResponseNegotiator()->respond($this->owner->request);

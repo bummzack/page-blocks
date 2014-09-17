@@ -1,0 +1,32 @@
+de:
+  Block:
+    MODIFIED: Geändert
+    PLURALNAME: Blöcke
+    PUBLISHED: Veröffentlicht
+    SINGULARNAME: Block
+    STATUS: Status
+    TITLE: Titel
+    TYPE: Typ
+    UNPUBLISHED: Unveröffentlicht
+  ImageBlock:
+    IMAGES: Bilder
+    PLURALNAME: 'Bild-Blöcke'
+    SINGULARNAME: 'Bild-Block'
+  PageBlock:
+    DELETE: Löschen
+    EDIT: Bearbeiten
+    PUBLISH: Veröffentlichen
+    UNPUBLISH: Veröffentlichung zurücknehmen
+  PageBlocks:
+    BLOCK: Block
+    PUBLISH_ALL: 'Veröffentliche Seite & Blöcke'
+    PUBLISH_ALL_SUCCESS: 'Seite und Blöcke wurden veröffentlicht'
+  TextBlock:
+    CONTENT: Inhalt
+    PLURALNAME: 'Text-Blöcke'
+    SINGULARNAME: 'Text-Block'
+  VideoBlock:
+    ASPECT_RATIO: 'Seitenverhältnis'
+    PLURALNAME: 'Video-Blöcke'
+    SINGULARNAME: 'Video-Block'
+    VIDEO_URL: 'Video URL'
