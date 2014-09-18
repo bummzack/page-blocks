@@ -68,7 +68,14 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor {
 		// setup a bulk manager for block management
 		$bulkManager = new GridFieldBulkManager();
 		// remove the default actions
-		$bulkManager->removeBulkAction('bulkedit')->removeBulkAction('delete')->removeBulkAction('unlink');
+		$toRemove = array('bulkedit', 'bulkEdit', 'delete', 'unlink', 'unLink');
+		$validActions = array_keys($bulkManager->getConfig('actions'));
+		foreach ($toRemove as $key){
+			if(in_array($key, $validActions)){
+				$bulkManager->removeBulkAction($key);
+			}
+		}
+		
 		// add the actions in desired order
 		$bulkManager
 			->addBulkAction('publish', _t('PageBlock.PUBLISH', 'Publish'))
