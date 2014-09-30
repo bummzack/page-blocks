@@ -23,7 +23,6 @@ This module should be light-weight and extensible. We provide the backend integr
 #### Optional (for a better experience)
 These will be installed when installing the module via composer.
 
- - [SortableGridField](https://github.com/UndefinedOffset/SortableGridField) (allow content-block sorting)
  - [sortablefile](https://github.com/bummzack/sortablefile) (attach many images and sort them with drag'n'drop)
  - [Better Buttons for GridField](https://github.com/unclecheese/silverstripe-gridfield-betterbuttons) (better buttons in your gridfield records. Allows you to save/publish directly within the blocks instead of using the bulk-manager actions).
 
@@ -82,7 +81,6 @@ Page:
 
 The easiest way to make blocks sortable is to install the following (soft) dependencies:
 
- - [SortableGridField](https://github.com/UndefinedOffset/SortableGridField) (allow content-block sorting)
  - [sortablefile](https://github.com/bummzack/sortablefile) (attach many images and sort them with drag'n'drop)
 
 After doing so, you need to make the blocks sortable by adding the `Sortable` extension to them. Put the following into your `config.yml`

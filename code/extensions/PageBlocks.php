@@ -83,8 +83,8 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor {
 			->addBulkAction('bulkedit', _t('PageBlock.EDIT', 'Edit'), 'GridFieldBulkActionEditHandler')
 			->addBulkAction('versioneddelete', _t('PageBlock.DELETE', 'Delete'),'GridFieldBulkActionVersionedDeleteHandler');
 		
-		if($sortField && class_exists('GridFieldSortableRows')){
-			$this->addComponent(new GridFieldSortableRows('SortOrder'));
+		if($sortField && class_exists('GridFieldOrderableRows')){
+			$this->addComponent(new GridFieldOrderableRows('SortOrder'));
 		}
 		
 		// remove the delete action, since unlinking is not required

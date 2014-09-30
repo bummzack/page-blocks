@@ -43,7 +43,7 @@ class Block extends DataObject
 		if(!$this->IsPublished()){
 			return _t('Block.UNPUBLISHED', 'Unpublished');
 		}
-		if($this->stagesDiffer('Stage', 'Live')){
+		if($this->stagesDiffer('Stage', 'Live') || $this->isSortingChanged()){
 			return _t('Block.MODIFIED', 'Modified');
 		}
 		return _t('Block.PUBLISHED', 'Published');
@@ -84,5 +84,26 @@ class Block extends DataObject
 	{
 		// render with a template that has the same classname or fall back to "Block"
 		return $this->renderWith(array($this->ClassName, 'Block'));
+	}
+	
+	/**
+	 * Whether or not sorting of this block has changed.
+	 * This has to be checked separately, because the gridfield-extensions that deal with
+	 * sorting directly modify DB entries and thus don't update version numbers in the stage tables.
+	 * @param bool $checkPublished whether or not the published status of the block should also be checked
+	 * @return bool true if sorting is different between Stage and Live
+	 */
+	protected function isSortingChanged($checkPublished = false)
+	{
+		if($checkPublished && !$this->IsPublished()){
+			return false; // unpublished blocks obviously don't have different sortings
+		}
+		// if there's no sortable extension, the block isn't sorted
+		if(!$this->has_extension('Sortable') || !$this->hasField('SortOrder')){
+			return false;
+		}
+		
+		$sortLive = DB::query('SELECT "SortOrder" FROM "Block_Live" WHERE "ID" = '. $this->ID)->value();
+		return $sortLive != $this->SortOrder;
 	}
 }
