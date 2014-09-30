@@ -3,6 +3,10 @@
 ## TODO List
 
  - [x] Collect all strings and create translations (first wrap all necessary strings in `_t()` calls.
+ - Create language files
+   - [x] English 
+   - [x] German
+   - ...
  - [ ] Check if license is compatible with the licenses of the dependencies.
  - [ ] Add more block types<sup>1</sup>? Possible blocks:
    -  [ ] Form (maybe leverage userforms module?)
@@ -15,6 +19,7 @@
  - [ ] Write a manual for content-editors?
  - [x] Get composer to do what it should...
  - [ ] Make version history of blocks available?
+ - [ ] Test integration with major translatable solutions (translatable and fluent)
 
  
 1) If more blocks are being added, it might be necessary to allow toggling them on/off via `_config.yml`. A simple solution to that would be to "abuse" `canCreate`. 

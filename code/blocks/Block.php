@@ -22,13 +22,13 @@ class Block extends DataObject
 	
 	public function getCMSFields()
 	{
-		$fields = new FieldList();
-		$fields->push(new TabSet('Root', $mainTab = new Tab('Main')));
+		$fields = FieldList::create();
+		$fields->push(TabSet::create('Root', $mainTab = new Tab('Main')));
 		
 		$mainTab->setTitle(_t('SiteTree.TABMAIN', "Main"));
 		
 		$fields->addFieldsToTab('Root.Main', array(
-			new TextField('Title', _t('Block.TITLE', 'Title'))
+			TextField::create('Title', _t('Block.TITLE', 'Title'))
 		));
 		$this->extend('updateCMSFields', $fields);
 		return $fields;

@@ -36,7 +36,7 @@ class VideoBlock extends Block
 		$fields = parent::getCMSFields();
 		
 		// field to enter the video URL
-		$externalField = new TextField('ExternalMedia', _t('VideoBlock.VIDEO_URL', 'Video URL'));
+		$externalField = TextField::create('ExternalMedia', _t('VideoBlock.VIDEO_URL', 'Video URL'));
 		
 		// field for video aspect-ratio
 		$ratios = Config::inst()->get('VideoBlock', 'aspect_ratios');
@@ -53,7 +53,7 @@ class VideoBlock extends Block
 			}
 			
 			if(count($values) > 0){
-				$ratioField = new DropdownField('ManualRatio', _t('VideoBlock.ASPECT_RATIO', 'Aspect ratio'), $values);
+				$ratioField = DropdownField::create('ManualRatio', _t('VideoBlock.ASPECT_RATIO', 'Aspect ratio'), $values);
 			}
 		}
 		
@@ -62,7 +62,7 @@ class VideoBlock extends Block
 			$thumb = $this->MediaThumb()->SetWidth(120);
 			
 			$fields->addFieldToTab('Root.Main', 
-				new LiteralField('MediaThumb', '<div class="field"><div class="middleColumn">' .$thumb->Tag . '</div></div>')
+				LiteralField::create('MediaThumb', '<div class="field"><div class="middleColumn">' .$thumb->Tag . '</div></div>')
 			);
 		}
 		
@@ -90,7 +90,7 @@ class VideoBlock extends Block
 				if($contents){
 					$folder = Folder::find_or_make('downloaded');
 					file_put_contents($folder->getFullPath() . $fileName, $contents);
-					$file = new Image();
+					$file = Image::create();
 					$file->setFilename($folder->getFilename() . $fileName);
 					$file->ParentID = $folder->ID;
 					$this->MediaThumbID = $file->write();

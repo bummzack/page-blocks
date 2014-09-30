@@ -29,7 +29,7 @@ These will be installed when installing the module via composer.
 
 ## Installation
 
-Use composer to install the module and all its dependencies.
+Use [composer](https://getcomposer.org/) to install the module and all its dependencies.
 
     composer require bummzack/page-blocks 1.0.*@dev
     

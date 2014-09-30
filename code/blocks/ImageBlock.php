@@ -19,9 +19,9 @@ class ImageBlock extends Block
 		
 		$uploadField = null;
 		if(class_exists('SortableUploadField')){
-			$uploadField = new SortableUploadField('Images', _t('ImageBlock.IMAGES', 'Images'));
+			$uploadField = SortableUploadField::create('Images', _t('ImageBlock.IMAGES', 'Images'));
 		} else {
-			$uploadField = new UploadField('Images', _t('ImageBlock.IMAGES', 'Images'));
+			$uploadField = UploadField::create('Images', _t('ImageBlock.IMAGES', 'Images'));
 		}
 		
 		$fields->addFieldToTab('Root.Main', $uploadField);

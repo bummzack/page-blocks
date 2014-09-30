@@ -23,7 +23,7 @@ class PageBlocks extends DataExtension
 			: GridFieldConfig_BlockEditor::create();
 		
 		
-		$gridField = new GridField('Blocks', _t('PageBlocks.BLOCK', 'Block', 'GridField Title'), 
+		$gridField = GridField::create('Blocks', _t('PageBlocks.BLOCK', 'Block', 'GridField Title'), 
 			$this->owner->Blocks(), $gridConfig);
 		$gridField->setModelClass('Block');
 		
