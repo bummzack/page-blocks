@@ -159,3 +159,14 @@ $EmbedCode.RAW
 ```
 
 Then just run `dev/build?flush=1` and you're set. The EmbedBlock should be available in the CMS via dropdown.
+!
+
+## Screenshots
+
+![Overview](docs/images/overview.png)
+
+![Detail](docs/images/detail.png)
+
+![Bulk Editing](docs/images/bulk.png)
+
+![Creation](docs/images/create.png)
