@@ -19,7 +19,7 @@
 		"silverstripe/framework": "~3.1",
 		"colymba/gridfield-bulk-editing-tools": "dev-master",
 		"unclecheese/betterbuttons": "dev-master",
-		"ajshort/silverstripe-gridfieldextensions": "dev-master",
+		"silverstripe-australia/gridfieldextensions": "dev-master",
 		"bummzack/sortablefile": "1.0.*@dev"
 	},
 	"extra": {
