@@ -75,6 +75,15 @@ class Block extends DataObject
 		
 		return parent::canCreate($member);
 	}
+
+	/**
+	 * Class name to use in CSS
+	 * @return string
+	 */
+	public function CSSClass()
+	{
+		return $this->ClassName;
+	}
 	
 	/**
 	 * Render this block to HTML
@@ -84,6 +93,18 @@ class Block extends DataObject
 	{
 		// render with a template that has the same classname or fall back to "Block"
 		return $this->renderWith(array($this->ClassName, 'Block'));
+	}
+
+	/**
+	 * Get the full title of this block, including title of the parent (eg. the Page it belongs to)
+	 * @return string
+	 */
+	public function FullTitle()
+	{
+		if($this->ParentID){
+			return $this->Parent()->Title . ' > ' . $this->Title;
+		}
+		return $this->Title;
 	}
 	
 	/**

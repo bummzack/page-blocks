@@ -17,6 +17,7 @@ de:
     EDIT: Bearbeiten
     PUBLISH: Veröffentlichen
     UNPUBLISH: Veröffentlichung zurücknehmen
+    UNLINK: Verbindung entfernen
   PageBlocks:
     BLOCK: Block
     PUBLISH_ALL: 'Veröffentliche Seite & Blöcke'
@@ -30,3 +31,7 @@ de:
     PLURALNAME: 'Video-Blöcke'
     SINGULARNAME: 'Video-Block'
     VIDEO_URL: 'Video URL'
+  VirtualBlock:
+      COPYOF: '(Kopie von)'
+      NO_ORIGINAL: '(Kein Original gewählt)'
+      SELECT_ORIGINAL: 'Original wählen'

@@ -114,13 +114,41 @@ VideoBlock:
     - '4/3'
 ```
 
+### Specify which blocks can be added to a page
+
+Imagine that there are two different Page-types. One page can only have *Text-* and *Video-Blocks* attached, the other page should only have *Text-* and *Image-Blocks* as valid options.
+
+The provided `GridFieldConfig_BlockEditor` has a method `setAllowedBlocks` which lets you specify the blocks that can be created on a per-gridfield basis.
+This is also being used by the `PageBlocks` Extension.
+
+Here's an example, where we limit the allowed blocks to just `ImageBlock` and `TextBlock`:
+
+```php
+public function getCMSFields()
+{
+    $fields = parent::getCMSFields();
+
+    // get the Blocks GridField
+    if ($blocks = $fields->fieldByName('Root.Main.Blocks')) {
+        // Restrict the types of blocks that can be added to this page
+        $blocks->getConfig()->setAllowedBlocks(array(
+            'ImageBlock', 'TextBlock'
+        ));
+    }
+
+    return $fields;
+}
+
+```
+
+
 ## Templates
 There are example templates for all the blocks available in the `page-blocks/templates/Blocks` directory. Feel free to copy the entirey `Blocks` directory to your `themes/<themename>/templates` or into your `mysite/templates` folder so that you can customize them to your liking.
 
 To output your blocks in your page templates, do something like this:
 ```html
 <% loop $Blocks %>
-<section class="block $ClassName">
+<section class="block $CSSClass">
 	<h2>$Title</h2> <!-- The block title is being used as section header -->
 	$HTML <!-- This will be rendered with the specific block template -->
 </section>
@@ -153,13 +181,13 @@ class EmbedBlock extends Block
 ```
 
 Then also create a matching template (named `EmbedBlock.ss`) in your template folder. The template code could look like this:
+
 ```yml
 <%-- Well, this template is rather simple --%>
 $EmbedCode.RAW
 ```
 
 Then just run `dev/build?flush=1` and you're set. The EmbedBlock should be available in the CMS via dropdown.
-!
 
 ## Screenshots
 

@@ -17,6 +17,7 @@ en:
     EDIT: Edit
     PUBLISH: Publish
     UNPUBLISH: Unpublish
+    UNLINK: Unlink
   PageBlocks:
     BLOCK: Block
     PUBLISH_ALL: 'Publish Page & Blocks'
@@ -30,3 +31,7 @@ en:
     PLURALNAME: 'Video Blocks'
     SINGULARNAME: 'Video Block'
     VIDEO_URL: 'Video URL'
+  VirtualBlock:
+    COPYOF: '(copy of)'
+    NO_ORIGINAL: '(no original set)'
+    SELECT_ORIGINAL: 'Select original'

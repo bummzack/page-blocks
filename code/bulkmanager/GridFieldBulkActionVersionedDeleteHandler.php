@@ -35,7 +35,7 @@ class GridFieldBulkActionVersionedDeleteHandler extends GridFieldBulkActionHandl
 		foreach ( $this->getRecords() as $record )
 		{				
 			if($record->hasExtension('Versioned')){
-				$record->deleteFromStage('Live');
+				$record->deleteFromStage(Versioned::get_live_stage());
 			}
 			array_push($ids, $record->ID);
 			$record->delete();

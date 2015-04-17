@@ -60,9 +60,10 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor {
 	/**
 	 * @param string $sortField - Field to sort the blocks on. If this is set, it will also make the
 	 * 	blocks sortable in the CMS (requires SortableGridField module!)
+	 * @param array $allowedBlocks - a set of allowed class names, optionally mapped to titles
 	 * @param int $itemsPerPage - How many items per page should show up
 	 */
-	public function __construct($sortField = null, $itemsPerPage=null) {
+	public function __construct($sortField = null, $allowedBlocks = null, $itemsPerPage=null) {
 		parent::__construct($itemsPerPage);
 
 		// setup a bulk manager for block management
@@ -80,8 +81,14 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor {
 		$bulkManager
 			->addBulkAction('publish', _t('PageBlock.PUBLISH', 'Publish'))
 			->addBulkAction('unpublish', _t('PageBlock.UNPUBLISH', 'Unpublish'))
-			->addBulkAction('bulkedit', _t('PageBlock.EDIT', 'Edit'), 'GridFieldBulkActionEditHandler')
-			->addBulkAction('versioneddelete', _t('PageBlock.DELETE', 'Delete'),'GridFieldBulkActionVersionedDeleteHandler');
+			->addBulkAction('bulkedit', _t('PageBlock.EDIT', 'Edit'), 'GridFieldBulkActionEditHandler', array(
+				'icon' => 'pencil'
+			))->addBulkAction('versionedunlink', _t('PageBlock.UNLINK', 'Unlink'),'GridFieldBulkActionVersionedUnlinkHandler', array(
+				'icon' => 'chain--minus'
+			))->addBulkAction('versioneddelete', _t('PageBlock.DELETE', 'Delete'),'GridFieldBulkActionVersionedDeleteHandler', array(
+				'isDestructive' => true,
+				'icon' => 'decline'
+			));
 
 		if($sortField && class_exists('GridFieldOrderableRows')){
 			$this->addComponent(new GridFieldOrderableRows($sortField));
@@ -93,11 +100,7 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor {
 		// remove the search field since it doesn't make sense (cannot add existing, unless "stealing" from another page)
 		$this->removeComponentsByType('GridFieldAddExistingAutocompleter');
 
-		/*
-		$searchButton = new GridFieldAddExistingSearchButton('buttons-before-right');
-		$searchButton->setSearchList(Block::get()->filter(array('ParentID' => 0)));
-		$this->addComponent($searchButton);
-		*/
+		$this->addComponent(new GridFieldAddExistingSearchButton('buttons-before-right'));
 
 		$this->addComponent(new GridFieldAddNewMultiClass(), 'GridFieldToolbarHeader');
 		$this->addComponent($bulkManager);
@@ -106,5 +109,60 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor {
 			'i18n_singular_name' => _t('Block.TYPE', 'Type'),
 			'PublishedStatus' => _t('Block.STATUS', 'Status')
 		));
+
+		$this->setAllowedBlocks($allowedBlocks);
+	}
+
+	/**
+	 * Get the allowed blocks for this gridfield
+	 * @return array|null
+	 */
+	public function getAllowedBlocks()
+	{
+		if($mc = $this->getComponentByType('GridFieldAddNewMultiClass')){
+			return $mc->getClasses();
+		}
+		return null;
+	}
+
+	/**
+	 * Set the allowed blocks for this gridfield
+	 * @param array $allowedBlocks a set of allowed class names, optionally mapped to titles
+	 */
+	public function setAllowedBlocks(array $allowedBlocks)
+	{
+		$classes = null;
+
+		if($mc = $this->getComponentByType('GridFieldAddNewMultiClass')){
+			$search = $this->getComponentByType('GridFieldAddExistingSearchButton');
+			$blockClasses = array_values(ClassInfo::subclassesFor('Block'));
+			sort($blockClasses);
+
+			if(is_array($allowedBlocks)){
+				$allowedClasses = array();
+
+				foreach($allowedBlocks as $class => $title) {
+					if(!is_string($class)) {
+						$class = $title;
+					}
+
+					if(in_array($class, $blockClasses)){
+						$allowedClasses[] = $class;
+					}
+				}
+
+				$mc->setClasses($allowedClasses);
+				if($search){
+					$search->setSearchList(Block::get()->filter(array('ParentID' => 0, 'ClassName' => $allowedClasses)));
+				}
+			} else {
+				if($search){
+					$search->setSearchList(Block::get()->filter(array('ParentID' => 0)));
+				}
+				$mc->setClasses(null);
+			}
+
+		}
+
 	}
 }

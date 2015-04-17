@@ -38,7 +38,7 @@ class GridFieldBulkActionUnpublishHandler extends GridFieldBulkActionHandler
 		{				
 			if($record->hasExtension('Versioned')){
 				array_push($ids, $record->ID);
-				$record->deleteFromStage('Live');
+				$record->deleteFromStage(Versioned::get_live_stage());
 			}	
 		}
 
