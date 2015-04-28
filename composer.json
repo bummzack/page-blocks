@@ -20,7 +20,7 @@
 		"colymba/gridfield-bulk-editing-tools": "dev-master",
 		"unclecheese/betterbuttons": "dev-master",
 		"silverstripe-australia/gridfieldextensions": "dev-master",
-		"bummzack/sortablefile": "1.0.*@dev"
+		"bummzack/sortablefile": "1.1.*@dev"
 	},
 	"extra": {
         "branch-alias": {
