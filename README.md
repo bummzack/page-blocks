@@ -16,9 +16,9 @@ This module should be light-weight and extensible. We provide the backend integr
 ## Requirements
 
 #### Mandatory
- - [SilverStripe 3.1](http://www.silverstripe.org/stable-download/)
+ - [SilverStripe 3.1 or 3.2](https://docs.silverstripe.org/en/3.2/getting_started/composer/)
  - [GridField Bulk Editing Tools](https://github.com/colymba/GridFieldBulkEditingTools)
- - [GridField Extensions](https://github.com/ajshort/silverstripe-gridfieldextensions)
+ - [GridField Extensions](https://github.com/silverstripe-australia/silverstripe-gridfieldextensions)
 
 #### Optional (for a better experience)
 These will be installed when installing the module via composer.
@@ -30,7 +30,7 @@ These will be installed when installing the module via composer.
 
 Use [composer](https://getcomposer.org/) to install the module and all its dependencies.
 
-    composer require bummzack/page-blocks 1.0.*@dev
+    composer require bummzack/page-blocks
     
 If the above fails (composer complains about no matching packages when resolving requirements), then open up your `composer.json` file and add `"minimum-stability": "dev"` in the "root" of the JSON structure: 
 
@@ -62,7 +62,7 @@ class BlockPage extends Page
     );
 }
 
-class ContentPage_Controller extends Page_Controller
+class BlockPage_Controller extends Page_Controller
 {
     
 }
@@ -76,22 +76,6 @@ Page:
   extensions:
     - PageBlocks
 ```
-
-#### Making the blocks sortable
-
-The easiest way to make blocks sortable is to install the following (soft) dependencies:
-
- - [sortablefile](https://github.com/bummzack/sortablefile) (attach many images and sort them with drag'n'drop)
-
-After doing so, you need to make the blocks sortable by adding the `Sortable` extension to them. Put the following into your `config.yml`
-
-```yml
-# put this in your mysite/_config/config.yml
-Block:
-  extensions:
-    - Sortable
-```
-Run `dev/build?flush=1` afterwards and you're set.
 
 #### Overriding some of the defaults
 
@@ -156,6 +140,10 @@ To output your blocks in your page templates, do something like this:
 ```
 
 There's also an include file you can use to output all the blocks. It can be found at `page-blocks/templates/Includes/Blocks.ss`.
+
+## Adding a Block to multiple Pages
+
+Use the provided `VirtualBlock` to create virtual versions of an existing block.
 
 ## Writing custom Blocks
 

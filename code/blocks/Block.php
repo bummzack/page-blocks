@@ -9,7 +9,8 @@
 class Block extends DataObject
 {
 	private static $db = array(
-		'Title'	=> 'Varchar(255)'
+		'Title'	=> 'Varchar(255)',
+		'SortOrder' => 'Int'
 	);
 	
 	private static $has_one = array(
@@ -19,6 +20,8 @@ class Block extends DataObject
 	private static $extensions = array(
 		"Versioned('Stage', 'Live')"
 	);
+
+	private static $default_sort = 'SortOrder';
 	
 	public function getCMSFields()
 	{
@@ -119,12 +122,19 @@ class Block extends DataObject
 		if($checkPublished && !$this->IsPublished()){
 			return false; // unpublished blocks obviously don't have different sortings
 		}
-		// if there's no sortable extension, the block isn't sorted
-		if(!$this->has_extension('Sortable') || !$this->hasField('SortOrder')){
-			return false;
-		}
-		
+
 		$sortLive = DB::query('SELECT "SortOrder" FROM "Block_Live" WHERE "ID" = '. $this->ID)->value();
 		return $sortLive != $this->SortOrder;
+	}
+
+	protected function onBeforeWrite()
+	{
+		parent::onBeforeWrite();
+
+		if(!$this->exists() && !$this->SortOrder){
+			// upon initial write, determine the max sort order and apply it
+			$maxSort = DB::query('SELECT MAX("SortOrder") FROM "Block" WHERE "ParentID" = '. $this->ParentID)->value();
+			$this->SortOrder = is_numeric($maxSort) ? $maxSort + 1 : 1;
+		}
 	}
 }

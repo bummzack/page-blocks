@@ -22,11 +22,7 @@ class VirtualBlock extends Block {
 
 		$mainTab->setTitle(_t('SiteTree.TABMAIN', "Main"));
 
-		$sort = 'ParentID';
-		if($this->has_extension('Sortable')){
-			$sort .= ', SortOrder';
-		}
-		$source = Block::get()->exclude('ClassName', 'VirtualBlock')->sort($sort)->map('ID', 'FullTitle');
+		$source = Block::get()->exclude('ClassName', 'VirtualBlock')->sort('ParentID, SortOrder')->map('ID', 'FullTitle');
 
 		$fields->addFieldsToTab('Root.Main', array(
 			ReadonlyField::create('Title', _t('Block.TITLE', 'Title'), $this->getTitle()),
