@@ -109,6 +109,14 @@ class Block extends DataObject
 		}
 		return $this->Title;
 	}
+
+	/**
+	 * Get the title to show in the CMS
+	 * @return string
+	 */
+	public function getCMSTitle(){
+		return $this->Title;
+	}
 	
 	/**
 	 * Whether or not sorting of this block has changed.

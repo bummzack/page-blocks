@@ -8,7 +8,16 @@ class VirtualBlock extends Block {
 		'OriginalBlock' => 'Block'
 	);
 
-	public function getTitle(){
+	public function getTitle()
+	{
+		if($this->OriginalBlockID){
+			return $this->OriginalBlock()->Title;
+		}
+
+		return '';
+	}
+
+	public function getCMSTitle(){
 		if($this->OriginalBlockID){
 			return _t('VirtualBlock.COPYOF', '(copy of)') . ' ' . $this->OriginalBlock()->Title;
 		}

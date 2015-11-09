@@ -102,7 +102,7 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor {
 		$this->addComponent(new GridFieldAddNewMultiClass(), 'GridFieldToolbarHeader');
 		$this->addComponent($bulkManager);
 		$this->getComponentByType('GridFieldDataColumns')->setDisplayFields(array(
-			'Title' => _t('Block.TITLE', 'Title'),
+			'CMSTitle' => _t('Block.TITLE', 'Title'),
 			'i18n_singular_name' => _t('Block.TYPE', 'Type'),
 			'PublishedStatus' => _t('Block.STATUS', 'Status')
 		));
