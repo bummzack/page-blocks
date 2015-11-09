@@ -102,8 +102,24 @@ VideoBlock:
 
 Imagine that there are two different Page-types. One page can only have *Text-* and *Video-Blocks* attached, the other page should only have *Text-* and *Image-Blocks* as valid options.
 
-The provided `GridFieldConfig_BlockEditor` has a method `setAllowedBlocks` which lets you specify the blocks that can be created on a per-gridfield basis.
-This is also being used by the `PageBlocks` Extension.
+The best way to do so is to set the `allowed_blocks` config for your page.
+ 
+```yml
+# in your config.yml
+
+MyBlockPage:
+  allowed_blocks:
+    - TextBlock
+    - VideoBlock
+    
+MyOtherBlockPage:
+  allowed_blocks:
+    - TextBlock
+    - ImageBlock
+```
+
+
+If you need to set the allowed-blocks on a per-GridField basis, then use `GridFieldConfig_BlockEditor::setAllowedBlocks` which lets you specify the blocks that can be created.
 
 Here's an example, where we limit the allowed blocks to just `ImageBlock` and `TextBlock`:
 

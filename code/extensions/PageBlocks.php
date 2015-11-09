@@ -18,7 +18,7 @@ class PageBlocks extends DataExtension
 	private static $allow_publish_all = true;
 
 	public function updateCMSFields(FieldList $fields) {
-		$gridConfig = GridFieldConfig_BlockEditor::create('SortOrder');
+		$gridConfig = GridFieldConfig_BlockEditor::create('SortOrder', $this->owner->config()->get('allowed_blocks'));
 
 		$gridField = GridField::create('Blocks', _t('PageBlocks.BLOCK', 'Block', 'GridField Title'),
 			$this->owner->Blocks(), $gridConfig);
@@ -164,5 +164,7 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor {
 
 		}
 
+		// for method chaining
+		return $this;
 	}
 }

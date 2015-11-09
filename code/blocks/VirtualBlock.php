@@ -31,7 +31,15 @@ class VirtualBlock extends Block {
 
 		$mainTab->setTitle(_t('SiteTree.TABMAIN', "Main"));
 
-		$source = Block::get()->exclude('ClassName', 'VirtualBlock')->sort('ParentID, SortOrder')->map('ID', 'FullTitle');
+		$blockList = Block::get()->exclude('ClassName', 'VirtualBlock');
+
+		// Apply the allowed blocks config to the virtual-block
+		$allowed = $this->Parent()->config()->get('allowed_blocks');
+		if(is_array($allowed)){
+			$blockList = $blockList->filter(array('ClassName' => $allowed));
+		}
+
+		$source = $blockList->sort('ParentID, SortOrder')->map('ID', 'FullTitle');
 
 		$fields->addFieldsToTab('Root.Main', array(
 			ReadonlyField::create('Title', _t('Block.TITLE', 'Title'), $this->getTitle()),
