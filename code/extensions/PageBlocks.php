@@ -78,9 +78,7 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor {
 		$bulkManager
 			->addBulkAction('publish', _t('PageBlock.PUBLISH', 'Publish'))
 			->addBulkAction('unpublish', _t('PageBlock.UNPUBLISH', 'Unpublish'))
-			->addBulkAction('bulkedit', _t('PageBlock.EDIT', 'Edit'), 'GridFieldBulkActionEditHandler', array(
-				'icon' => 'pencil'
-			))->addBulkAction('versionedunlink', _t('PageBlock.UNLINK', 'Unlink'),'GridFieldBulkActionVersionedUnlinkHandler', array(
+			->addBulkAction('versionedunlink', _t('PageBlock.UNLINK', 'Unlink'),'GridFieldBulkActionVersionedUnlinkHandler', array(
 				'icon' => 'chain--minus'
 			))->addBulkAction('versioneddelete', _t('PageBlock.DELETE', 'Delete'),'GridFieldBulkActionVersionedDeleteHandler', array(
 				'isDestructive' => true,
