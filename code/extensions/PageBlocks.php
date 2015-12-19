@@ -117,7 +117,6 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor
         if (is_array($allowedBlocks)) {
             $this->setAllowedBlocks($allowedBlocks);
         }
-
     }
 
     /**
@@ -171,7 +170,6 @@ class GridFieldConfig_BlockEditor extends GridFieldConfig_RelationEditor
                 }
                 $mc->setClasses(null);
             }
-
         }
 
         // for method chaining
