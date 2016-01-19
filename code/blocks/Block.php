@@ -22,6 +22,12 @@ class Block extends DataObject
         "Versioned('Stage', 'Live')"
     );
 
+    private static $summary_fields = array(
+        'Title' => 'Title',
+        'ClassName' => 'Type',
+        'Parent.Title' => 'Belongs to'
+    );
+
     private static $default_sort = 'SortOrder';
 
     public function getCMSFields()
