@@ -1,0 +1,37 @@
+hr:
+  Block:
+    MODIFIED: Promjenjen
+    PLURALNAME: Blokovi
+    PUBLISHED: Objavljen
+    SINGULARNAME: Blok
+    STATUS: Status
+    TITLE: Naslov
+    TYPE: Tip
+    UNPUBLISHED: Neobjavljen
+  ImageBlock:
+    IMAGES: Slike
+    PLURALNAME: 'Blokovi slika'
+    SINGULARNAME: 'Blok slike'
+  PageBlock:
+    DELETE: Obriši
+    EDIT: Uredi
+    PUBLISH: Objavi
+    UNPUBLISH: Odjavi
+    UNLINK: Otkači
+  PageBlocks:
+    BLOCK: Blok
+    PUBLISH_ALL: 'Objavi stranicu i blokove'
+    PUBLISH_ALL_SUCCESS: 'Upješno objevljena stranica i svi blokovi'
+  TextBlock:
+    CONTENT: Sadržaj
+    PLURALNAME: 'Tekstualni blokovi'
+    SINGULARNAME: 'Tekstualni blok'
+  VideoBlock:
+    ASPECT_RATIO: 'Proporcije'
+    PLURALNAME: 'Video blokovi'
+    SINGULARNAME: 'Video blok'
+    VIDEO_URL: 'Video URL'
+  VirtualBlock:
+    COPYOF: '(kopija od)'
+    NO_ORIGINAL: '(nema originalni set)'
+    SELECT_ORIGINAL: 'Odaberi original'
