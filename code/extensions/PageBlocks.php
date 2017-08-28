@@ -26,9 +26,8 @@ class PageBlocks extends DataExtension
             $this->owner->Blocks(), $gridConfig);
         $gridField->setModelClass('Block');
 
-        $fields->addFieldsToTab('Root.Main', array(
-            $gridField
-        ), 'Metadata');
+        $tab = $fields->findOrMakeTab('Root.BlocksTab', _t('PageBlocks.BlocksTab', 'Blocks'));
+        $tab->push($gridField);
     }
 
     /**
