@@ -1,0 +1,37 @@
+ru: 
+  Block: 
+    MODIFIED: Изменён
+    PLURALNAME: Блоки
+    PUBLISHED: Опубликован
+    SINGULARNAME: Блок
+    STATUS: Статус
+    TITLE: Заголовок
+    TYPE: Тип
+    UNPUBLISHED: Неопубликован
+  ImageBlock: 
+    IMAGES: Изображения
+    PLURALNAME: "Блоки Изображений"
+    SINGULARNAME: "Блок Изображения"
+  PageBlock: 
+    DELETE: Удалить
+    EDIT: Изменить
+    PUBLISH: Опубликовать
+    UNLINK: Отцепить
+    UNPUBLISH: "Отменить Публикацию"
+  PageBlocks: 
+    BLOCK: Блок
+    PUBLISH_ALL: "Опубликовать страницу и Блоки"
+    PUBLISH_ALL_SUCCESS: "Страница и блоки опубликованы"
+  TextBlock: 
+    CONTENT: Содержимое
+    PLURALNAME: "Текстовые Блоки"
+    SINGULARNAME: "Текстовый Блок"
+  VideoBlock: 
+    ASPECT_RATIO: "Соотношение размера"
+    PLURALNAME: "Видео Блоки"
+    SINGULARNAME: "Видео Блок"
+    VIDEO_URL: "WWW Адресс Видео"
+  VirtualBlock: 
+    COPYOF: (копия)
+    NO_ORIGINAL: "(оригинал не выбран)"
+    SELECT_ORIGINAL: "Выберите оригинал"
